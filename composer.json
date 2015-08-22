@@ -1,0 +1,19 @@
+{
+    "name": "slowprog/tripster",
+    "description": "Tripster.ru API PHP wrapper",
+    "keywords": ["tripster api"],
+    "homepage": "https://github.com/SlowProg/tripster",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Tyshev",
+            "email": "slowprog@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": { "SlowProg\\Tripster\\": "" }
+    }
+}
