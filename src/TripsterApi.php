@@ -35,7 +35,9 @@ class TripsterApi
 	 */
 	final public function getCities()
 	{
-		return $this->curlRequest('v1/cities_iata');
+		$result = $this->curlRequest('v1/cities_iata');
+		
+		return explode(PHP_EOL, $result)
 	}
 	
 	/**
