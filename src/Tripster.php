@@ -1,7 +1,7 @@
 <?php
-namespace SlowProg\Tripster;
+namespace Tripster;
 
-class Tripster
+class TripsterApi
 {
 	/*
 	 * URL fro RestAPI
