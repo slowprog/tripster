@@ -35,9 +35,10 @@ class TripsterApi
 	 */
 	final public function getCities()
 	{
-		$result = $this->curlRequest('v1/cities_iata');
+		// this sh..t returning not a json
+		$result = file_get_contents(self::URL . 'v1/cities_iata');
 		
-		return explode(PHP_EOL, $result)
+		return explode(PHP_EOL, $result);
 	}
 	
 	/**
@@ -50,7 +51,7 @@ class TripsterApi
 	 */
 	final public function getCity($iata, $shortText = false)
 	{
-		return $this->curlRequest('', [
+		return $this->request('', [
 			'iata' => strtoupper($iata),
 			'template' => 'json',
 			'order' => 'top',
@@ -66,12 +67,15 @@ class TripsterApi
 	 * @return mixed
 	 * @access private
 	 */
-	private function curlRequest($path, $parameters = null)
+	private function request($path, array $parameters = null)
 	{
 		$url = self::URL.$path;
 		
-		$result = file_get_contents($url);
+		if ($parameters)
+			$parameters = '?'.http_build_query($parameters);
+			
+		$result = file_get_contents($url.$parameters);
 		
-		return $result;
+		return json_decode($result, true);
 	}
 }
